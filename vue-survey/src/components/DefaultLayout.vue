@@ -65,8 +65,7 @@
 
             <DisclosurePanel class="md:hidden">
                 <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-                    <RouterLink as="router-link" v-for="(item, index) in navigation" :key="index"
-                        :to="item.to"
+                    <RouterLink as="router-link" v-for="(item, index) in navigation" :key="index" :to="item.to"
                         :class="['text-white hover:bg-indigo-500 hover:bg-opacity-75', 'block px-3 py-2 rounded-md text-base font-medium']">
                         {{ item.name }}</RouterLink>
                 </div>
@@ -115,9 +114,12 @@ const navigation = [
 ];
 
 const logout = () => {
-    store.commit('logout');
-    router.push({
-        name: 'Login'
-    })
+    store.dispatch('logout')
+        .then(() => {
+            router.push({
+                name: 'Login'
+            });
+        });
+
 }
 </script>
