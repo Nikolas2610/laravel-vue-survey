@@ -5,6 +5,7 @@
                 <h1 class="text-lg font-semibold leading-6 text-gray-900">
                     {{ title }}
                 </h1>
+                <slot name="header"></slot>
             </div>
         </header>
         <main>
