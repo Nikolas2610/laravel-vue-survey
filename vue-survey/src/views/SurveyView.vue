@@ -150,13 +150,14 @@
 <script setup>
 import PageComponent from '../components/PageComponent.vue';
 import { ref } from "vue"
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import store from '../store';
 import { v4 as uuidv4 } from "uuid";
 
 import QuestionEditor from '../components/editor/QuestionEditor.vue';
 
 const route = useRoute();
+const router = useRouter();
 
 let model = ref({
     title: '',
@@ -197,5 +198,14 @@ const questionChange = (question) => {
             return q;
         }
     );
+}
+
+const saveSurvey = () => {
+    store.dispatch('saveSurvey', model.value).then(({data}) => {
+        router.push({
+            name: "Surveys",
+            params: { id: data.data.id }
+        })
+    });
 }
 </script>
