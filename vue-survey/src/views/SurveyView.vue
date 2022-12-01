@@ -14,7 +14,7 @@
                         Image
                     </label>
                     <div class="mt-1 flex items-center">
-                        <img v-if="model.image" :src="model.image" :alt="model.title" class="w-64 h-48 object-cover">
+                        <img v-if="model.image_url" :src="model.image_url" :alt="model.title" class="w-64 h-48 object-cover">
                         <span
                             class="flex items-center justify-center h-12 w-12 rounded-full overflow-hidden bg-gray-100"
                             v-else>
@@ -44,7 +44,9 @@
                             focus:outline-none
                             focus:ring-2
                             focus:ring-offset-2focus:ring-indigo-500">
-                            <input type="file" class="absolute left-0 top-0 right-0 bottom-0 opacity-0 cursor-pointer">
+                            <input type="file" 
+                            @change="onImageChoose"
+                            class="absolute left-0 top-0 right-0 bottom-0 opacity-0 cursor-pointer">
                             Change
                         </button>
                     </div>
@@ -170,6 +172,18 @@ let model = ref({
 
 if (route.params.id) {
     model.value = store.state.surveys.find((s) => s.id === parseInt(route.params.id))
+}
+
+const onImageChoose = (ev) => {
+    const file = ev.target.files[0];
+
+    const reader = new FileReader();
+    reader.onload = () => {
+        model.value.image = reader.result;
+
+        model.value.image_url = reader.result;
+    }
+    reader.readAsDataURL(file);
 }
 
 const addQuestion = (index) => {
