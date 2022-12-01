@@ -79,7 +79,7 @@ class SurveyController extends Controller
         }
 
         if ($survey->image) {
-            Storage::disk('local')->delete($survey->image);
+            Storage::disk('local')->delete('public/' . $survey->image);
         }
 
         $survey->update($data);
@@ -100,6 +100,12 @@ class SurveyController extends Controller
         }
 
         $survey->delete();
+
+        // Delete image from storage
+        if ($survey->image) {
+            Storage::disk('local')->delete('public/' . $survey->image);
+        }
+
         return response('', 204);
     }
 
@@ -135,7 +141,7 @@ class SurveyController extends Controller
         // }
 
 
-        Storage::disk('local')->put($relativePath, $image);
+        Storage::disk('local')->put('public/' . $relativePath, $image);
         return $relativePath;
     }
 }
