@@ -1,152 +1,152 @@
 import { createStore } from 'vuex';
 import axiosClient from '../axios';
 
-const tmpSurveys = [
-    {
-        id: 100,
-        title: "TheCodeholic channel",
-        slug: "the-codeholic-channel",
-        status: "draft",
-        image: "https://i.picsum.photos/id/1058/200/300.jpg?hmac=KdLDQtUUGPBshA5WQaD3nZMUtdgHS9zJJ3pfoXWdjUE",
-        description: "My name is Nikolas<br> I am web developer",
-        created_at: "2022-11-10 09:00:00",
-        updated_at: "2022-11-10 09:00:00",
-        expire_date: "2022-11-20 09:00:00",
-        questions: [
-            {
-                id: 1,
-                type: 'select',
-                question: 'From which country are you?',
-                description: null,
-                data: {
-                    options: [
-                        { uuid: "122", text: "USA" },
-                        { uuid: "123", text: "US" },
-                        { uuid: "124", text: "UK" },
-                        { uuid: "125", text: "CY" },
-                        { uuid: "126", text: "GR" },
-                    ]
-                }
-            },
-            {
-                id: 2,
-                type: 'checkbox',
-                question: 'From which country are you?',
-                description: null,
-                data: {
-                    options: [
-                        { uuid: "122", text: "USA" },
-                        { uuid: "123", text: "US" },
-                        { uuid: "124", text: "UK" },
-                        { uuid: "125", text: "CY" },
-                        { uuid: "126", text: "GR" },
-                    ]
-                }
-            },
-            {
-                id: 4,
-                type: 'radio',
-                question: 'From which country are you?',
-                description: null,
-                data: {
-                    options: [
-                        { uuid: "122", text: "USA" },
-                        { uuid: "123", text: "US" },
-                        { uuid: "124", text: "UK" },
-                        { uuid: "125", text: "CY" },
-                        { uuid: "126", text: "GR" },
-                    ]
-                }
-            },
-            {
-                id: 5,
-                type: 'text',
-                question: 'From which country are you?',
-                description: null,
-                data: {}
-            },
-            {
-                id: 6,
-                type: 'textarea',
-                question: 'From which country are you?',
-                description: "Decriptions........................",
-                data: {}
-            },
-        ]
-    },
-    {
-        id: 100,
-        title: "TheCodeholic channel2",
-        slug: "the-codeholic-channel-2",
-        status: "draft",
-        image: "https://i.picsum.photos/id/1058/200/300.jpg?hmac=KdLDQtUUGPBshA5WQaD3nZMUtdgHS9zJJ3pfoXWdjUE",
-        description: "My name is Nikolas<br> I am web developer 2",
-        created_at: "2022-11-10 09:00:00",
-        updated_at: "2022-11-10 09:00:00",
-        expire_date: "2022-11-20 09:00:00",
-        questions: [
-            {
-                id: 1,
-                type: 'select',
-                question: 'From which country are you?',
-                description: null,
-                data: {
-                    options: [
-                        { uuid: "122", text: "USA" },
-                        { uuid: "123", text: "US" },
-                        { uuid: "124", text: "UK" },
-                        { uuid: "125", text: "CY" },
-                        { uuid: "126", text: "GR" },
-                    ]
-                }
-            },
-            {
-                id: 2,
-                type: 'checkbox',
-                question: 'From which country are you?',
-                description: null,
-                data: {
-                    options: [
-                        { uuid: "122", text: "USA" },
-                        { uuid: "123", text: "US" },
-                        { uuid: "124", text: "UK" },
-                        { uuid: "125", text: "CY" },
-                        { uuid: "126", text: "GR" },
-                    ]
-                }
-            },
-            {
-                id: 4,
-                type: 'radio',
-                question: 'From which country are you?',
-                description: null,
-                data: {
-                    options: [
-                        { uuid: "122", text: "USA" },
-                        { uuid: "123", text: "US" },
-                        { uuid: "124", text: "UK" },
-                        { uuid: "125", text: "CY" },
-                        { uuid: "126", text: "GR" },
-                    ]
-                }
-            },
-            {
-                id: 5,
-                type: 'text',
-                question: 'From which country are you?',
-                description: null,
-                data: {}
-            },
-            {
-                id: 6,
-                type: 'textarea',
-                question: 'From which country are you?',
-                description: "Decriptions........................",
-                data: {}
-            },
-        ]
-    },
-]
+// const tmpSurveys = [
+//     {
+//         id: 100,
+//         title: "TheCodeholic channel",
+//         slug: "the-codeholic-channel",
+//         status: "draft",
+//         image: "https://i.picsum.photos/id/1058/200/300.jpg?hmac=KdLDQtUUGPBshA5WQaD3nZMUtdgHS9zJJ3pfoXWdjUE",
+//         description: "My name is Nikolas<br> I am web developer",
+//         created_at: "2022-11-10 09:00:00",
+//         updated_at: "2022-11-10 09:00:00",
+//         expire_date: "2022-11-20 09:00:00",
+//         questions: [
+//             {
+//                 id: 1,
+//                 type: 'select',
+//                 question: 'From which country are you?',
+//                 description: null,
+//                 data: {
+//                     options: [
+//                         { uuid: "122", text: "USA" },
+//                         { uuid: "123", text: "US" },
+//                         { uuid: "124", text: "UK" },
+//                         { uuid: "125", text: "CY" },
+//                         { uuid: "126", text: "GR" },
+//                     ]
+//                 }
+//             },
+//             {
+//                 id: 2,
+//                 type: 'checkbox',
+//                 question: 'From which country are you?',
+//                 description: null,
+//                 data: {
+//                     options: [
+//                         { uuid: "122", text: "USA" },
+//                         { uuid: "123", text: "US" },
+//                         { uuid: "124", text: "UK" },
+//                         { uuid: "125", text: "CY" },
+//                         { uuid: "126", text: "GR" },
+//                     ]
+//                 }
+//             },
+//             {
+//                 id: 4,
+//                 type: 'radio',
+//                 question: 'From which country are you?',
+//                 description: null,
+//                 data: {
+//                     options: [
+//                         { uuid: "122", text: "USA" },
+//                         { uuid: "123", text: "US" },
+//                         { uuid: "124", text: "UK" },
+//                         { uuid: "125", text: "CY" },
+//                         { uuid: "126", text: "GR" },
+//                     ]
+//                 }
+//             },
+//             {
+//                 id: 5,
+//                 type: 'text',
+//                 question: 'From which country are you?',
+//                 description: null,
+//                 data: {}
+//             },
+//             {
+//                 id: 6,
+//                 type: 'textarea',
+//                 question: 'From which country are you?',
+//                 description: "Decriptions........................",
+//                 data: {}
+//             },
+//         ]
+//     },
+//     {
+//         id: 100,
+//         title: "TheCodeholic channel2",
+//         slug: "the-codeholic-channel-2",
+//         status: "draft",
+//         image: "https://i.picsum.photos/id/1058/200/300.jpg?hmac=KdLDQtUUGPBshA5WQaD3nZMUtdgHS9zJJ3pfoXWdjUE",
+//         description: "My name is Nikolas<br> I am web developer 2",
+//         created_at: "2022-11-10 09:00:00",
+//         updated_at: "2022-11-10 09:00:00",
+//         expire_date: "2022-11-20 09:00:00",
+//         questions: [
+//             {
+//                 id: 1,
+//                 type: 'select',
+//                 question: 'From which country are you?',
+//                 description: null,
+//                 data: {
+//                     options: [
+//                         { uuid: "122", text: "USA" },
+//                         { uuid: "123", text: "US" },
+//                         { uuid: "124", text: "UK" },
+//                         { uuid: "125", text: "CY" },
+//                         { uuid: "126", text: "GR" },
+//                     ]
+//                 }
+//             },
+//             {
+//                 id: 2,
+//                 type: 'checkbox',
+//                 question: 'From which country are you?',
+//                 description: null,
+//                 data: {
+//                     options: [
+//                         { uuid: "122", text: "USA" },
+//                         { uuid: "123", text: "US" },
+//                         { uuid: "124", text: "UK" },
+//                         { uuid: "125", text: "CY" },
+//                         { uuid: "126", text: "GR" },
+//                     ]
+//                 }
+//             },
+//             {
+//                 id: 4,
+//                 type: 'radio',
+//                 question: 'From which country are you?',
+//                 description: null,
+//                 data: {
+//                     options: [
+//                         { uuid: "122", text: "USA" },
+//                         { uuid: "123", text: "US" },
+//                         { uuid: "124", text: "UK" },
+//                         { uuid: "125", text: "CY" },
+//                         { uuid: "126", text: "GR" },
+//                     ]
+//                 }
+//             },
+//             {
+//                 id: 5,
+//                 type: 'text',
+//                 question: 'From which country are you?',
+//                 description: null,
+//                 data: {}
+//             },
+//             {
+//                 id: 6,
+//                 type: 'textarea',
+//                 question: 'From which country are you?',
+//                 description: "Decriptions........................",
+//                 data: {}
+//             },
+//         ]
+//     },
+// ]
 
 const store = createStore({
     state: {
@@ -154,26 +154,57 @@ const store = createStore({
             data: {},
             token: sessionStorage.getItem("TOKEN"),
         },
-        surveys: [...tmpSurveys], 
+        currentSurvey: {
+            loading: false,
+            data: {
+
+            }
+        },
+        surveys: {
+            loading: false,
+            data: []
+        },
         questionTypes: ["text", "select", "radio", "checkbox", "textarea"]
     },
     getters: {},
     actions: {
+        getSurveys({ commit }, id) {
+            commit('setSurveysLoading', true);
+            return axiosClient.get('/survey').then((res) => {
+                commit('setSurveysLoading', false);
+                commit('setSurveys', res.data);
+                return res;
+            })
+        },
+        getSurvey({ commit }, id) {
+            commit("setCurrentSurveyLoading", true);
+            return axiosClient
+                .get(`/survey/${id}`)
+                .then((res) => {
+                    commit("setCurrentSurvey", res.data);
+                    commit("setCurrentSurveyLoading", false);
+                    return res;
+                })
+                .catch((err) => {
+                    commit("setCurrentSurveyLoading", false);
+                    throw err;
+                })
+        },
         saveSurvey({ commit }, survey) {
             delete survey.image_url;
             let response;
             if (survey.id) {
                 response = axiosClient.put(`/survey/${survey.id}`, survey)
-                .then((res) => {
-                    commit('updateSurvey', res.data);
-                    return res;
-                })
+                    .then((res) => {
+                        commit('setCurrentSurvey', res.data);
+                        return res;
+                    })
             } else {
                 response = axiosClient.post(`/survey`, survey)
-                .then((res) => {
-                    commit('saveSurvey', res.data);
-                    return res;
-                })
+                    .then((res) => {
+                        commit('setCurrentSurvey', res.data);
+                        return res;
+                    })
             }
             return response;
         },
@@ -197,19 +228,23 @@ const store = createStore({
                     commit('logout');
                     return response;
                 });
+        },
+        deleteSurvey({ }, id) {
+            return axiosClient.delete(`/survey/${id}`);
         }
     },
     mutations: {
-        saveSurvey: (state, survey) => {
-            state.surveys = [...state.surveys, survey.data];
+        setCurrentSurveyLoading(state, loading) {
+            state.currentSurvey.loading = loading;
         },
-        updateSurvey: (state, survey) => {
-            state.surveys = state.surveys.map((s) => {
-                if (s.id == survey.data.id) {
-                    return survey.data;
-                } 
-                return s;
-            })
+        setSurveysLoading(state, loading) {
+            state.surveys.loading = loading;
+        },
+        setCurrentSurvey(state, survey) {
+            state.currentSurvey.data = survey.data;
+        },
+        setSurveys(state, data) {
+            state.surveys.data = data;
         },
         logout: state => {
             state.user.data = {};
