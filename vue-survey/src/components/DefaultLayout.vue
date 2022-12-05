@@ -94,6 +94,8 @@
             </DisclosurePanel>
         </Disclosure>
         <router-view></router-view>
+
+        <Notification />
     </div>
 </template>
   
@@ -104,6 +106,7 @@ import { useStore } from 'vuex'
 import { computed } from 'vue'
 import router from '../router';
 import { RouterLink } from 'vue-router';
+import Notification from '../components/Notification.vue'
 
 const store = useStore();
 const user = computed(() => store.state.user.data);

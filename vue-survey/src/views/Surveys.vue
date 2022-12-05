@@ -13,8 +13,10 @@
         </router-link>
       </div>
     </template>
-    <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3" v-if="surveys">
-      <SurveyListItem v-for="survey in surveys" :key="survey.id" :survey="survey" @delete="deleteSurvey(survey)" />
+    <div v-if="surveys.loading" class="flex justify-center">Loading...</div>
+    <div v-else class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3" v-if="surveys">
+      <SurveyListItem v-for="(survey, ind) in surveys.data.data" :key="survey.id" :survey="survey" @delete="deleteSurvey(survey)"
+      class="opacity-0 animate-fade-in-down" :style="{animationDelay: `${ind * 0.1}s`}" />
     </div>
   </PageComponent>
 </template>
@@ -26,7 +28,7 @@ import PageComponent from '../components/PageComponent.vue';
 import SurveyListItem from '../components/SurveyListItem.vue'
 
 store.dispatch('getSurveys');
-const surveys = computed(() => store.state.surveys.data.data);
+const surveys = computed(() => store.state.surveys);
 
 const deleteSurvey = (survey) => {
   if (confirm(`Are you sure you want to delete this survey? Operation can't be undone!!`)) {
