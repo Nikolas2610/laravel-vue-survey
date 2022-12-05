@@ -19,7 +19,7 @@
             </div>
         </template>
         <div v-if="surveyLoading" class="flex justify-center">Loading...</div>
-        <form @submit.prevent="saveSurvey" v-else>
+        <form @submit.prevent="saveSurvey" class="animate-fade-in-down" v-else>
             <div class="shadow sm:rounded-md sm:overflow-hidden">
                 <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                     <label class="block text-sm font-medium text-gray-700">
@@ -249,6 +249,10 @@ const questionChange = (question) => {
 
 const saveSurvey = () => {
     store.dispatch('saveSurvey', model.value).then(({ data }) => {
+        store.commit('notify', {
+            type: 'success',
+            message: 'Survey was successfully updated'
+        })
         router.push({
             name: "Surveys",
             params: { id: data.data.id }
