@@ -173,6 +173,20 @@ const store = createStore({
     },
     getters: {},
     actions: {
+        getSurveyBySlug({ commit }, slug) {
+            commit("setCurrentSurveyLoading", true);
+            return axiosClient
+                .get(`/survey-by-slug/${slug}`)
+                .then((res) => {
+                    commit("setCurrentSurvey", res.data);
+                    commit("setCurrentSurveyLoading", false);
+                    return res;
+                })
+                .catch((err) => {
+                    commit("setCurrentSurveyLoading", false);
+                    throw err;
+                })
+        },
         getSurveys({ commit }, { url = null } = {}) {
             url = url || '/survey';
             commit('setSurveysLoading', true);
@@ -247,6 +261,7 @@ const store = createStore({
             state.surveys.loading = loading;
         },
         setCurrentSurvey(state, survey) {
+            console.log(survey);
             state.currentSurvey.data = survey.data;
         },
         setSurveys(state, surveys) {

@@ -58,7 +58,6 @@ const deleteSurvey = (survey) => {
 };
 
 const getForPage = (ev, link) => {
-  console.log(ev);
   ev.preventDefault();
   if (!link.url || link.active) {
     return
