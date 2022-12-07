@@ -20,7 +20,7 @@
                 </select>
             </div>
             <div v-if="question.type === 'radio'">
-                <div v-for="(option, index) in quiestion.data.options" :key="option.uuid" class="flex items-center">
+                <div v-for="(option, index) in question.data.options" :key="option.uuid" class="flex items-center">
                     <input type="radio" :id="option.uuid" :name="'question' + question.id" :value="option.text"
                         @change="emits('update:modelValue', $event.target.value)"
                         class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
@@ -30,13 +30,21 @@
                 </div>
             </div>
             <div v-if="question.type === 'checkbox'">
-
+                <div v-for="(option, ind) in question.data.options" :key="option.uuid" class="flex items-center">
+                    <input @change="onCheckboxChange" v-model="model[option.text]" :id="option.uuid" type="checkbox"
+                        class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                    <label :for="option.uuid" class="ml-3 block text-sm font-medium text-gray-700">
+                        {{ option.text }}
+                    </label>
+                </div>
             </div>
             <div v-if="question.type === 'text'">
-
+                <input type="text" :value="modelValue" @input="emits('update:modelValue', $event.target.value)"
+                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
             <div v-if="question.type === 'textarea'">
-
+                <textarea :value="modelValue" @input="emits('update:modelValue', $event.target.value)"
+                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
             </div>
         </div>
     </fieldset>
@@ -44,6 +52,7 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 const { question, index, modelValue } = defineProps({
     question: Object,
     index: Number,
@@ -56,6 +65,17 @@ let model;
 if (question.type === "checkbox") {
     model = ref({})
 }
+
+const onCheckboxChange = ($event) => {
+    const selectedOptions = [];
+    for (let text in model.value) {
+        if (model.value[text]) {
+            selectedOptions.push(text);
+        }
+    }
+    emits('update:modelValue', selectedOptions);
+}
+
 </script>
 
 <style lang="scss" scoped>
