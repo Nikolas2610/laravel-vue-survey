@@ -187,6 +187,9 @@ const store = createStore({
                     throw err;
                 })
         },
+        saveSurveyAnswer({ commit }, { surveyId, answers }) {
+            return axiosClient.post(`/survey/${surveyId}/answer`, { answers });
+        },
         getSurveys({ commit }, { url = null } = {}) {
             url = url || '/survey';
             commit('setSurveysLoading', true);
@@ -261,7 +264,6 @@ const store = createStore({
             state.surveys.loading = loading;
         },
         setCurrentSurvey(state, survey) {
-            console.log(survey);
             state.currentSurvey.data = survey.data;
         },
         setSurveys(state, surveys) {
